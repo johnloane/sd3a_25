@@ -3,10 +3,12 @@ import face_recognition
 from PIL import Image, ImageDraw
 import numpy as np
 import speech_recognition
+import os
+import qrcode
 
 
 def main():
-    recognise_speech()
+    test_list()
     
 
 
@@ -82,10 +84,47 @@ def recognise_speech():
         print(recogniser.recognize_google(audio))
     
     
+def create_qrcode():
+    img = qrcode.make("https://github.com/johnloane/sd3a_25")
+    img.save("qr.png", "PNG")
+    
         
-        
+def add_two_integers():
+    x = get_integer()
+    y = get_integer()
+    print(int(x+y))
     
     
+def get_integer():
+    while True:
+        try:
+            x = int(input("Please enter an integer: "))
+            break
+        except ValueError:
+            print("Not an integer, please try again")
+    return x
+
+
+# Types int, str, bool, float, list, dict, set, tuple, NoneType
+   
+   
+def test_mutable():
+    grocery_list = ["Milk", "Bananas", "Bread", "Monster"]
+    print(grocery_list)
+    grocery_list[3] = "Red Bull"
+    print(grocery_list)
+    
+    
+def test_immutable():
+    misspelled_vegetable = "Cawrots"
+    misspelled_vegetable = "Carrot"
+    print(misspelled_vegetable)
+    
+    
+def test_list():
+    sd3a_names = ["Iker", "Sofia", "Ikram"]
+    print(len(sd3a_names))
+    print(max(sd3a_names))
   
 
 if __name__ == "__main__":
