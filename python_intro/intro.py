@@ -5,10 +5,13 @@ import numpy as np
 import speech_recognition
 import os
 import qrcode
+import google.generativeai as genai
+from dotenv import load_dotenv, find_dotenv
+
 
 
 def main():
-    test_list()
+    talk_to_gemini()
     
 
 
@@ -105,6 +108,22 @@ def get_integer():
     return x
 
 
+def talk_to_gemini():
+    _ = load_dotenv(find_dotenv())
+    gemini_api_key = os.environ["GEMINI_API_KEY"]
+    genai.configure(api_key=gemini_api_key)
+    system_prompt = "You are a friendly and supportive lecturer in Dundalk Institute of Technology. You are also a duck."
+    user_prompt = input("What is your question? ")
+    llm_model = "gemini-2.5-flash"
+    model = genai.GenerativeModel(llm_model)
+    prompt = [
+        {"role" : "user", "parts" : [system_prompt, user_prompt]},
+    ]
+    response = model.generate_content(prompt)
+    print(response.text.strip())
+    
+
+
 # Types int, str, bool, float, list, dict, set, tuple, NoneType
    
    
@@ -125,6 +144,30 @@ def test_list():
     sd3a_names = ["Iker", "Sofia", "Ikram"]
     print(len(sd3a_names))
     print(max(sd3a_names))
+    
+    
+def test_tuple():
+    # Tuple is an immutable ordered sequence of elements
+    traits = ("tall", "young", "strong")
+    height = traits[0]
+    age = traits[1]
+    height, age, strength = traits
+    
+    
+def test_sets():
+    # set mutable, unordered, unique sequence of elements
+    duplicate_numbers = [1, 1, 2, 2, 3, 3]
+    unique_numbers = set(duplicate_numbers)
+    print(unique_numbers)
+    unique_numbers.add(4)
+    unique_numbers.add(3)
+    print(unique_numbers)
+    
+    
+def test_dictionary():
+    # Mutable, not ordered, keys should be unique and immutable
+    inventory = {'bananas' : 1.29, 'apples' : 2.99, 'grapes' : 1.39}
+    print(inventory['bananas'])
   
 
 if __name__ == "__main__":

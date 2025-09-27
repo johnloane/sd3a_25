@@ -1,2 +1,3 @@
 *.cpp
 /intro_env
+.env
