@@ -7,6 +7,18 @@
     <title>Flask intro</title>
   </head>
   <body>
-    Hello, {{name}}
+    <form action="/greet" method="post">
+      <input
+        name="name"
+        ,
+        type="text"
+        ,
+        autocomplete="off"
+        ,
+        autofocus,
+        placeholder="Name"
+      />
+      <button type="submit">Greet</button>
+    </form>
   </body>
 </html>
