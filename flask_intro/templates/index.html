@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flask intro</title>
-  </head>
-  <body>
-    <form action="/greet" method="post">
-      <input
-        name="name"
-        ,
-        type="text"
-        ,
-        autocomplete="off"
-        ,
-        autofocus,
-        placeholder="Name"
-      />
-      <button type="submit">Greet</button>
-    </form>
-  </body>
-</html>
+{% extends "layout.html"%} {% block body %}
+<form action="/" method="post">
+  <input
+    name="name"
+    ,
+    type="text"
+    ,
+    autocomplete="off"
+    ,
+    autofocus,
+    placeholder="Name"
+  />
+  <button type="submit">Greet</button>
+</form>
+{% endblock %}
